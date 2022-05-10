@@ -1,7 +1,175 @@
 @use '../util' as *;
 @use '../globals' as *;
 
-body{
+body {
     font-family: 'Karla', sans-serif;
     font-size: 16px;
+    background-color: $grayish-Blue;
+    line-height: 1.6;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+
+}
+
+
+//helper calsses
+
+%padding {
+    padding: 1.4rem
+}
+
+.main {
+    width: min(100%-1rem, 500px);
+
+    margin: 0 auto;
+
+
+}
+
+section {}
+
+.join {
+    grid-area: a;
+
+    &>* {
+        padding-top: 1rem
+    }
+
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    @extend %padding;
+    background-color: #fff;
+
+    h1 {
+        color: $cyan;
+        font-size: 1.5rem;
+        font-weight: 700;
+
+    }
+
+    h2 {
+        color: $bright-Yellow;
+        font-weight: 700;
+        font-size: 1.3rem;
+
+
+    }
+
+    p {
+        color: $grayish-Blue;
+
+    }
+}
+
+.price {
+    grid-area: b;
+    color: $light-Gray;
+    background-color: $cyan;
+    @extend %padding;
+
+    .price-permonth {
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        gap: 20px;
+
+    }
+
+    h1 {
+        padding-top: 1rem;
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        padding-top: 1rem;
+
+        font-size: 2.4rem;
+        font-weight: 700;
+
+    }
+
+    span {
+        font-size: 1.3rem;
+        color: $grayish-Blue;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .button {
+        background-color: $bright-Yellow;
+        text-align: center;
+        width: 100%;
+
+
+        margin: 1rem auto;
+        border-radius: 10px;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+
+
+
+    }
+
+
+}
+
+.about {
+    grid-area: c;
+    color: $light-Gray;
+    background-color: lighten($color: $cyan, $amount: 10);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    @extend %padding;
+
+    h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    p {
+
+        padding-top: 1.5rem;
+    }
+
+}
+
+@media (min-width:45rem) {
+
+    .main {
+        width: clamp(700px, 700px, 1000px);
+
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "a a"
+            "b c"
+        ;
+
+    }
+
+    .join {
+        padding-bottom: 2rem;
+    }
+
+    .price {
+        border-bottom-left-radius: 10px;
+    }
+
+    .about {
+        border-bottom-left-radius: 0;
+        padding-top: 2.3rem;
+
+    }
+}
+
+@media (min-width:65rem) {
+
+    .main {
+        width: clamp(700px, 900px, 1200px);
+    }
 }
